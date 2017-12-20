@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="PersistenceJDE" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <shared-cache-mode>ALL</shared-cache-mode>
+    <class>com.thinkstep.jde.persistence.entities.emissioncalculation.EmissionFactor</class>
+    <class>com.thinkstep.jde.persistence.entities.emissioncalculation.EmissionProcess</class>
+    <class>com.thinkstep.jde.persistence.entities.Country</class>
+    <class>com.thinkstep.jde.persistence.entities.DataRow</class>
+    <class>com.thinkstep.jde.persistence.entities.Location</class>
+    <class>com.thinkstep.jde.persistence.entities.fuelconsumptioncalculation.VehicleType</class>
+    <class>com.thinkstep.jde.persistence.entities.preferences.LogisticServiceProvider</class>
+    <class>com.thinkstep.jde.persistence.entities.preferences.TourIdentifier</class>
+    <class>com.thinkstep.jde.persistence.entities.preferences.SoFiConnectionSetting</class>
+    <class>com.thinkstep.jde.persistence.entities.graphics.MappingItemGraphics</class>
+    <class>com.thinkstep.jde.persistence.entities.rawdata.DataKey</class>
+    <class>com.thinkstep.jde.persistence.entities.Rules.Rule</class>
+    <class>com.thinkstep.jde.persistence.entities.Rules.Action</class>
+    <class>com.thinkstep.jde.persistence.entities.Rules.CalculateLoadAction</class>
+    <class>com.thinkstep.jde.persistence.entities.Rules.AssignFuelTypeAction</class>
+    <class>com.thinkstep.jde.persistence.entities.Rules.AssignVehicleTypeAction</class>
+    <class>com.thinkstep.jde.persistence.entities.Rules.AssignConstantAction</class>
+    <class>com.thinkstep.jde.persistence.entities.Rules.AssignValueAction</class>
+    <class>com.thinkstep.jde.persistence.entities.Rules.AssignDateAction</class>
+    <class>com.thinkstep.jde.persistence.entities.Rules.CalculateDistanceAction</class>
+    <class>com.thinkstep.jde.persistence.entities.Rules.AssignBusinessUnitAction</class>
+    <properties>
+      
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:C:\JDE_DB\JDE\jde.db"/>
+      <property name="javax.persistence.jdbc.user" value=""/>
+      <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+      <property name="eclipselink.deploy-on-startup" value="true" />
+    </properties>
+    
+  </persistence-unit>
+</persistence>

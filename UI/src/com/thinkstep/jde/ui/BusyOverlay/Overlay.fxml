@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #EEEEEE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+      <AnchorPane prefHeight="110.0" prefWidth="600.0" VBox.vgrow="NEVER">
+         <children>
+            <ProgressBar layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="573.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Loading view" textAlignment="CENTER" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="44.0" />
+         </children>
+      </AnchorPane>
+      <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+   </children>
+</VBox>

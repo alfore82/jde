@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.thinkstep.jde.ui.VehicleTypes.VehicleTypeEditorController">
+   <children>
+      <TableView fx:id="tblVehicleTypes" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+        <columns>
+          <TableColumn fx:id="colName" prefWidth="123.0" text="Name" />
+          <TableColumn fx:id="colMaxPayload" prefWidth="169.0" text="Max. Payload [t]" />
+            <TableColumn fx:id="colMaxPallets" prefWidth="188.0" text="Max Num of floor pallets [-]" />
+            <TableColumn fx:id="colFuelConsEmpty" prefWidth="188.0" text="Fuel Consumption Empty [l/100km] Diesel [kg/100km] Gas [kWH/100km] Electricity" />
+            <TableColumn fx:id="colFuelConsLoaded" prefWidth="188.0" text="Fuel Consumption Loaded [l/100km] Diesel [kg/100km] Gas [kWH/100km] Electricity" />
+        </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#addVehicleType" text="Add" />
+                  <MenuItem mnemonicParsing="false" onAction="#deleteVehicleType" text="Delete" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </TableView>
+   </children>
+</AnchorPane>

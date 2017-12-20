@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.thinkstep.jde.ui.EmissionFactor.EmissionFactorEditorController">
+   <children>
+      <TableView fx:id="tblEmissionFactors" layoutX="84.0" layoutY="65.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+        <columns>
+          <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="colUuid" prefWidth="75.0" text="UUID" />
+          <TableColumn fx:id="colStage" prefWidth="75.0" text="Stage" />
+            <TableColumn fx:id="colAmount" prefWidth="129.0" text="Amount [kg CO2-Equiv.]" />
+        </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#addEmissionFactor" text="Add" />
+                  <MenuItem mnemonicParsing="false" onAction="#deleteEmissionFactor" text="Delete" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="181.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.thinkstep.jde.ui.actions.ImportCountryViewController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="File:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="18.0" />
+      <TextField fx:id="displayFileName" layoutX="87.0" layoutY="10.0" prefHeight="25.0" prefWidth="469.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="14.0" />
+      <Button layoutX="564.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleOpenFileAction" text="..." AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <Button layoutX="538.0" layoutY="243.0" mnemonicParsing="false" onAction="#handleImportAction" text="Import" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <Button layoutX="14.0" layoutY="243.0" mnemonicParsing="false" onAction="#handleCancelAction" text="Cancel" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
+      <Label layoutX="14.0" layoutY="57.0" text="Worksheet:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="48.0" />
+      <ComboBox fx:id="cbWorksheet" disable="true" layoutX="88.0" layoutY="53.0" prefHeight="25.0" prefWidth="502.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="44.0" />
+      <Label layoutX="24.0" layoutY="67.0" text="Header Row" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="78.0" />
+      <Label layoutX="34.0" layoutY="77.0" text="First Data Row" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="108.0" />
+      <TextField fx:id="tfDataRow" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="104.0" />
+      <TextField fx:id="tfHeaderRow" prefHeight="25.0" prefWidth="438.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="74.0" />
+   </children>
+</AnchorPane>

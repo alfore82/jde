@@ -1,0 +1,14 @@
+# Created by https://www.gitignore.io/api/netbeans
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+nbactions.xml
+UI/src/com/thinkstep/jde/imports/filereaders/eu2017.dm
+UI/src/com/thinkstep/jde/imports/filereaders/eu2017.ods
+
+# End of https://www.gitignore.io/api/netbeans

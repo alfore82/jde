@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="151.0" prefWidth="561.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.thinkstep.jde.ui.views.progress.ProgressBarController">
+   <children>
+      <ProgressBar fx:id="progressBar" layoutX="13.0" layoutY="70.0" prefHeight="18.0" prefWidth="428.0" progress="0.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+      <Label fx:id="action" layoutX="13.0" layoutY="14.0" text="Importiere Daten:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="importedItem" layoutX="14.0" layoutY="41.0" text="Label" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="60.0" />
+   </children>
+</AnchorPane>

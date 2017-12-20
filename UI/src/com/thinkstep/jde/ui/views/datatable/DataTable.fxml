@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="apMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.thinkstep.jde.ui.views.datatable.DataTableController">
+   <children>
+      <ComboBox fx:id="cbLsp" prefWidth="150.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="10.0" />
+      <HBox alignment="CENTER_RIGHT" layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="1197.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="44.0">
+         <children>
+            <SplitMenuButton layoutX="96.0" layoutY="11.0" mnemonicParsing="false" onAction="#exportSoFi" text="Export to SoFi">
+               <items>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#exportSoFi" text="Export to SoFi" />
+                  <MenuItem mnemonicParsing="false" onAction="#exportFile" text="Export to File" />
+                  <MenuItem mnemonicParsing="false" onAction="#exportDocuFile" text="Export Documentation File" />
+                  <MenuItem mnemonicParsing="false" onAction="#mapTourIdentifier" text="Map Tour Identifier" />
+               </items>
+            </SplitMenuButton>
+            <Pane prefHeight="36.0" prefWidth="10.0" HBox.hgrow="ALWAYS" />
+            <SplitMenuButton mnemonicParsing="false" onAction="#calculateGhgEmission" text="GHG Calculation">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#FuelMapping" text="GHG mapping" />
+                <MenuItem mnemonicParsing="false" onAction="#vehicleTypeMapping" text="Vehcile type determination" />
+                  <MenuItem mnemonicParsing="false" onAction="#loadFactorMapping" text="Load factor and empty trip factor mapping" />
+                  <MenuItem mnemonicParsing="false" onAction="#distanceMapping" text="Distance mapping" />
+                  <MenuItem mnemonicParsing="false" onAction="#shipmentWeightMapping" text="Shipment weight mapping" />
+                  <MenuItem mnemonicParsing="false" onAction="#dateMapping" text="Date mapping" />
+                  <MenuItem mnemonicParsing="false" onAction="#mapBu" text="Business unit mapping" />
+              </items>
+            </SplitMenuButton>
+         </children>
+      </HBox>
+      <TableView fx:id="tblData" layoutX="14.0" layoutY="48.0" prefHeight="744.0" prefWidth="1197.0" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="84.0">
+        <columns>
+          <TableColumn fx:id="colDate" prefWidth="75.0" text="Date" />
+            <TableColumn fx:id="colShipmentWeight" prefWidth="123.0" text="Shipment Weight [kg]" />
+            <TableColumn fx:id="colNumberOfPallets" prefWidth="75.0" text="Number of Pallets [-]" />
+            <TableColumn fx:id="colBusinessUnit" prefWidth="75.0" text="BusinessUnit" />
+            <TableColumn fx:id="colGhgEmissions1" prefWidth="123.0" text="Pickup leg">
+               <columns>
+                  <TableColumn fx:id="colDistancePickup" prefWidth="75.0" text="Distance [km]" />
+                  <TableColumn fx:id="colVehicleTypePickup" prefWidth="75.0" text="Vehicle Type" />
+                  <TableColumn fx:id="colLoadFactorPickup" prefWidth="75.0" text="Load Factor [%]" />
+                  <TableColumn fx:id="colEmptyTripFactorPickup" prefWidth="75.0" text="Empty Trip Factor [%]" />
+                  <TableColumn fx:id="colFuelConsumptionPickup" prefWidth="97.0" text="Fuel consumed [l, kWh]" />
+                  <TableColumn fx:id="colGhgEmissionsPickup" prefWidth="101.0" text="GHG Emissions [kg/CO2e]" />
+               </columns>
+            </TableColumn>
+            <TableColumn fx:id="colGhgEmissions11" prefWidth="123.0" text="Main leg">
+               <columns>
+                  <TableColumn fx:id="colDistanceMain" prefWidth="75.0" text="Distance [km]" />
+                  <TableColumn fx:id="colVehicleTypeMain" prefWidth="75.0" text="Vehicle Type" />
+                  <TableColumn fx:id="colLoadFactorMain" prefWidth="75.0" text="Load Factor [%]" />
+                  <TableColumn fx:id="colEmptyTripFactorMain" prefWidth="75.0" text="Empty Trip Factor [%]" />
+                  <TableColumn fx:id="colFuelConsumptionMain" prefWidth="97.0" text="Fuel consumed [l, kWh]" />
+                  <TableColumn fx:id="colGhgEmissionsMain" prefWidth="101.0" text="GHG Emissions [kg/CO2e]" />
+               </columns>
+            </TableColumn>
+            <TableColumn fx:id="colGhgEmissions111" prefWidth="123.0" text="Delivery leg">
+               <columns>
+                  <TableColumn fx:id="colDistanceDelivery" prefWidth="75.0" text="Distance [km]" />
+                  <TableColumn fx:id="colVehicleTypeDelivery" prefWidth="75.0" text="Vehicle Type" />
+                  <TableColumn fx:id="colLoadFactorDelivery" prefWidth="75.0" text="Load Factor [%]" />
+                  <TableColumn fx:id="colEmptyTripFactorDelivery" prefWidth="75.0" text="Empty Trip Factor [%]" />
+                  <TableColumn fx:id="colFuelConsumptionDelivery" prefWidth="97.0" text="Fuel consumed [l, kWh]" />
+                  <TableColumn fx:id="colGhgEmissionsDelivery" prefWidth="101.0" text="GHG Emissions [kg/CO2e]" />
+               </columns>
+            </TableColumn>
+            <TableColumn fx:id="colError" prefWidth="75.0" text="Error" />
+            <TableColumn fx:id="colRawData" prefWidth="75.0" text="RawData">
+               <columns>
+                  <TableColumn prefWidth="75.0" text="Column X" />
+               </columns></TableColumn>
+        </columns>
+      </TableView>
+      <Label text="Logistic Service Provider" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <Button layoutX="1159.0" layoutY="838.0" mnemonicParsing="false" onAction="#saveData" text="Save" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+   </children>
+</AnchorPane>
