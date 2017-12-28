@@ -419,7 +419,7 @@ public class RuleBuilderIfCondition extends Group implements IfConditionInterfac
 
     @Override
     public Rule getRule() {
-        
+
         if (this.rule == null) {
             this.rule = new Rule();
         }
@@ -477,43 +477,60 @@ public class RuleBuilderIfCondition extends Group implements IfConditionInterfac
     @Override
     public void setRule(Rule r) {
         this.rule = r;
-        if (cbParam.getItems().contains(r.getKey())){
-            cbParam.setValue(rule.getKey());
-        } else {
-            cbParam.getItems().add(rule.getKey());
-            cbParam.setValue(rule.getKey());
+        if (this.rule!=null){
+            if (cbParam.getItems().contains(r.getKey())){
+                cbParam.setValue(rule.getKey());
+            } else {
+                cbParam.getItems().add(rule.getKey());
+                cbParam.setValue(rule.getKey());
+            }
+            RuleType ruleType = rule.getRuleType();
+            
+            cond.setValue(ruleType);
+
+            switch (rule.getRuleType()){
+                case LARGER:
+                case LARGEREQUAL:
+                case IDENTITY:
+                case SMALLEREQUAL:
+                case SMALLER:
+                case NUMBEROFPALLETSPERTOURLARGER:
+                case NUMBEROFPALLETSPERTOURLARGEREQUAL:
+
+                case NUMBEROFPALLETSPERTOURSMALLEREQUAL:
+                case NUMBEROFPALLETSPERTOURSMALLER:
+                case PALLETUTILIZATIONLARGER:
+                case PALLETUTILIZATIONLARGEREQUAL:
+                case PALLETUTILIZATIONSMALLEREQUAL:
+                case PALLETUTILIZATIONSMALLER:
+
+
+
+                    NumberFormat nf = NumberFormat.getInstance();
+                    choice.setText(nf.format(rule.getValueDouble()));
+                case BEGINSWITH:     
+                case ENDSWITH:
+                case CONTAINS:
+                case EQUALS:
+                     choice.setText(rule.getValueString());
+                    break;
+            }
         }
-        RuleType ruleType = rule.getRuleType();
+    }
+
+    @Override
+    public boolean checkSave() {
+        boolean result = true;
         
-        cond.setValue(ruleType);
-        
-        switch (rule.getRuleType()){
-            case LARGER:
-            case LARGEREQUAL:
-            case IDENTITY:
-            case SMALLEREQUAL:
-            case SMALLER:
-            case NUMBEROFPALLETSPERTOURLARGER:
-            case NUMBEROFPALLETSPERTOURLARGEREQUAL:
-                
-            case NUMBEROFPALLETSPERTOURSMALLEREQUAL:
-            case NUMBEROFPALLETSPERTOURSMALLER:
-            case PALLETUTILIZATIONLARGER:
-            case PALLETUTILIZATIONLARGEREQUAL:
-            case PALLETUTILIZATIONSMALLEREQUAL:
-            case PALLETUTILIZATIONSMALLER:
-                
-                
-                
-                NumberFormat nf = NumberFormat.getInstance();
-                choice.setText(nf.format(rule.getValueDouble()));
-            case BEGINSWITH:     
-            case ENDSWITH:
-            case CONTAINS:
-            case EQUALS:
-                 choice.setText(rule.getValueString());
-                break;
+        if (this.cbParam.getSelectionModel().getSelectedItem() == null){
+            result = false;
         }
+        
+        if (this.cond.getSelectionModel().getSelectedItem() == null){
+            result = false;
+        }
+        
+        return result;
     }
 
 }

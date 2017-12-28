@@ -15,6 +15,7 @@ import java.util.prefs.PreferenceChangeEvent;
 import java.util.prefs.Preferences;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import org.eclipse.persistence.sessions.Session;
 import org.openide.util.NbPreferences;
 
 /**
@@ -56,23 +57,38 @@ public class DataRowService {
     }
     
     public synchronized void deleteDataRow(DataRow c){
-        EntityManager em = EntityManagerProvider.getInstance().getEntityManager();
+        EntityManagerProvider emp = EntityManagerProvider.getInstance();
+        EntityManager em =  emp.getEntityManager();
         em.getTransaction().begin();
         DataRow cdel = em.find(DataRow.class, c.getId());
         em.remove(cdel);
         em.getTransaction().commit();
         em.close();
+        emp.doVaccum();
     }
     
     public synchronized void deleteDataRowByLsp(LogisticServiceProvider lsp){
-        EntityManager em = EntityManagerProvider.getInstance().getEntityManager();
+        EntityManagerProvider emp = EntityManagerProvider.getInstance();
+        EntityManager em =  emp.getEntityManager();
         em.getTransaction().begin();
         LogisticServiceProvider cdel = em.find(LogisticServiceProvider.class, lsp.getId());
         Query q = em.createQuery("Delete from DataRow d where d.lsp = :lsp");
-        q.setParameter("lsp", lsp);
+        q.setParameter("lsp", cdel);
         q.executeUpdate();
         em.getTransaction().commit();
         em.close();
+        emp.doVaccum();
+    }
+    
+    public synchronized void deleteAllDataRows(){
+        EntityManagerProvider emp = EntityManagerProvider.getInstance();
+        EntityManager em = emp.getEntityManager();
+        em.getTransaction().begin();
+        Query q = em.createQuery("Delete from DataRow d");
+        q.executeUpdate();
+        em.getTransaction().commit();
+        em.close();
+        emp.doVaccum();
     }
     
     public synchronized void deleteDataRowByLsps(List<LogisticServiceProvider> lsps){
@@ -81,7 +97,7 @@ public class DataRowService {
         for (LogisticServiceProvider lsp:lsps){
             LogisticServiceProvider cdel = em.find(LogisticServiceProvider.class, lsp.getId());
             Query q = em.createQuery("Delete from DataRow d where d.lsp = :lsp");
-            q.setParameter("lsp", lsp);
+            q.setParameter("lsp", cdel);
             q.executeUpdate();
         }
         em.getTransaction().commit();
@@ -141,5 +157,7 @@ public class DataRowService {
         em.close();
         return result;
     }
+    
+    
     
 }

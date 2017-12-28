@@ -5,7 +5,6 @@
  */
 package com.thinkstep.jde.ModuleInstall;
 
-import com.thinkstep.jde.imports.filereaders.DateExtractor;
 import com.thinkstep.jde.persistence.services.DistanceService;
 import org.openide.modules.ModuleInstall;
 

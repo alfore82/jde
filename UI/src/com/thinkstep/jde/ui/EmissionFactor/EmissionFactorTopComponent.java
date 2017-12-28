@@ -35,7 +35,7 @@ import org.openide.util.NbBundle.Messages;
 )
 @TopComponent.Registration(mode = "editor", openAtStartup = false)
 @ActionID(category = "Window", id = "com.thinkstep.jde.ui.EmissionFactor.EmissionFactorTopComponent")
-@ActionReference(path = "Menu/Window" /*, position = 333 */)
+@ActionReference(path = "Menu/Window" , position = 1)
 @TopComponent.OpenActionRegistration(
         displayName = "#CTL_EmissionFactorAction",
         preferredID = "EmissionFactorTopComponent"

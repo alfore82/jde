@@ -143,7 +143,7 @@ public class DistanceService {
                         ctrl.setMissingLocations(locationsNotFound);
                         Stage stage = new Stage();
                         stage.setScene(new Scene(root));
-                        stage.initStyle(StageStyle.UTILITY);
+                        stage.initStyle(StageStyle.DECORATED);
                         stage.initModality(Modality.NONE);
                         stage.setAlwaysOnTop(true);
                         stage.showAndWait();

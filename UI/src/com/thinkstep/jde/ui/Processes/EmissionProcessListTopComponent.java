@@ -35,15 +35,15 @@ import org.openide.util.NbBundle.Messages;
 )
 @TopComponent.Registration(mode = "explorer", openAtStartup = false)
 @ActionID(category = "Window", id = "com.thinkstep.jde.ui.Processes.EmissionProcessListTopComponent")
-@ActionReference(path = "Menu/Window" /*, position = 333 */)
+@ActionReference(path = "Menu/Window" , position = 2 )
 @TopComponent.OpenActionRegistration(
         displayName = "#CTL_EmissionProcessListAction",
         preferredID = "EmissionProcessListTopComponent"
 )
 @Messages({
-    "CTL_EmissionProcessListAction=EmissionProcessList",
-    "CTL_EmissionProcessListTopComponent=EmissionProcessList Window",
-    "HINT_EmissionProcessListTopComponent=This is a EmissionProcessList window"
+    "CTL_EmissionProcessListAction=Emission processes",
+    "CTL_EmissionProcessListTopComponent=Emission process list window",
+    "HINT_EmissionProcessListTopComponent=This is a emission process list window"
 })
 public final class EmissionProcessListTopComponent extends TopComponent {
     

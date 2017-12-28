@@ -35,15 +35,15 @@ import org.openide.util.NbBundle.Messages;
 )
 @TopComponent.Registration(mode = "editor", openAtStartup = false)
 @ActionID(category = "Window", id = "com.thinkstep.jde.ui.VehicleTypes.VehicleTypeEditorTopComponent")
-@ActionReference(path = "Menu/Window" /*, position = 333 */)
+@ActionReference(path = "Menu/Window" , position = 4)
 @TopComponent.OpenActionRegistration(
         displayName = "#CTL_VehicleTypeEditorAction",
         preferredID = "VehicleTypeEditorTopComponent"
 )
 @Messages({
-    "CTL_VehicleTypeEditorAction=VehicleType editor",
-    "CTL_VehicleTypeEditorTopComponent=VehicleType editor window",
-    "HINT_VehicleTypeEditorTopComponent=This is a VehicleType editor window"
+    "CTL_VehicleTypeEditorAction=Vehicle types",
+    "CTL_VehicleTypeEditorTopComponent=Vehicle type editor window",
+    "HINT_VehicleTypeEditorTopComponent=This is a vehicle type editor window"
 })
 public final class VehicleTypeEditorTopComponent extends TopComponent {
 

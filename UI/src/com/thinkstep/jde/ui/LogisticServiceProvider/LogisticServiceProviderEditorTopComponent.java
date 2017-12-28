@@ -36,13 +36,13 @@ import org.openide.util.NbBundle.Messages;
 )
 @TopComponent.Registration(mode = "editor", openAtStartup = false)
 @ActionID(category = "Window", id = "com.thinkstep.jde.ui.LogisticsServiceProvider.LogisticServiceProviderEditor")
-@ActionReference(path = "Menu/Window" /*, position = 333 */)
+@ActionReference(path = "Menu/Window",  position = 3)
 @TopComponent.OpenActionRegistration(
         displayName = "#CTL_LogisticServiceProviderEditorAction",
         preferredID = "LogisticServiceProviderEditorTopComponent"
 )
 @Messages({
-    "CTL_LogisticServiceProviderEditorAction=Logstic Service Provider editor",
+    "CTL_LogisticServiceProviderEditorAction=Logstic Service Providers",
     "CTL_CountryEditorTopComponent=Logstic Service Provider window",
     "HINT_CountryEditorTopComponent=This is a Logstic Service Provider window"
 })

@@ -16,7 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
@@ -26,18 +26,18 @@ import org.openide.util.Exceptions;
 import org.openide.util.NbBundle.Messages;
 
 @ActionID(
-        category = "ImportLsp",
-        id = "com.thinkstep.jde.ui.actions.LspImportAction"
+        category = "File",
+        id = "com.thinkstep.jde.ui.actions.ChangeDataBase"
 )
 @ActionRegistration(
-        displayName = "#CTL_LspImportAction"
+        displayName = "#CTL_ChangeDataBase"
 )
 @ActionReferences({
-    @ActionReference(path = "Menu/File", position = 1200, separatorAfter = 1201),
-    @ActionReference(path = "Shortcuts", name = "D-I")
+    @ActionReference(path = "Menu/File", position = 900, separatorAfter = 950),
+    @ActionReference(path = "Shortcuts", name = "D-D")
 })
-@Messages("CTL_LspImportAction=Import Lsp data")
-public final class LspImportAction implements ActionListener {
+@Messages("CTL_ChangeDataBase=Change database")
+public final class ChangeDataBase implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -46,17 +46,14 @@ public final class LspImportAction implements ActionListener {
             public void run() {
                 try {
                     Stage stage = new Stage();
-                    URL location = getClass().getResource("ImportLspView.fxml");
+                    URL location = getClass().getResource("ChangeDatabase.fxml");
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(location);
                     fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
                     Parent root = (Parent) fxmlLoader.load(location.openStream());
-                    ImportLspViewController documentDialogController = (ImportLspViewController) fxmlLoader.getController();
-                    documentDialogController.setTilteForFileDialog("Open Lsp Data-File");
-                    documentDialogController.addExtension(new ExtensionFilter("Excel-File", "*.xls", "*.xlsx", "*.xlsm"), new XlsFileReader());
-                    documentDialogController.addExtension(new ExtensionFilter("Tab-Stop separated text file", "*.txt"), new TabStopFileReader());
+                    ChangeDatabaseController ctrl = (ChangeDatabaseController) fxmlLoader.getController();
                     Scene scene = new Scene(root);
-                    stage.setTitle("Import Lsp Data");
+                    stage.setTitle("Change database location");
                     stage.setScene(scene);
                     stage.show();
                 } catch (IOException ex) {

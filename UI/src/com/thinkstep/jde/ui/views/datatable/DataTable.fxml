@@ -16,6 +16,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#exportFile" text="Export to File" />
                   <MenuItem mnemonicParsing="false" onAction="#exportDocuFile" text="Export Documentation File" />
                   <MenuItem mnemonicParsing="false" onAction="#mapTourIdentifier" text="Map Tour Identifier" />
+                  <MenuItem mnemonicParsing="false" onAction="#deleteData" text="Delete data for this LSP" />
                </items>
             </SplitMenuButton>
             <Pane prefHeight="36.0" prefWidth="10.0" HBox.hgrow="ALWAYS" />

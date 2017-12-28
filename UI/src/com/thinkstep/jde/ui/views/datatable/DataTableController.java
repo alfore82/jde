@@ -842,6 +842,34 @@ public class DataTableController implements Initializable, UpdateNotification {
         
     }
 
+    @FXML
+    private void deleteData(ActionEvent event) {
+        LogisticServiceProvider lsp = cbLsp.getSelectionModel().getSelectedItem();
+        
+        if (lsp != null) {
+            
+            double bottomAnchor = AnchorPane.getBottomAnchor(tblData);
+            double topAnchor = AnchorPane.getTopAnchor(tblData);
+            double leftAnchor = AnchorPane.getLeftAnchor(tblData);
+            double rightAnchor = AnchorPane.getRightAnchor(tblData);
+            
+           
+            Overlay ov = new Overlay(apMain,()->{
+                DataRowService drService = DataRowService.getINSTANCE();
+                drService.deleteDataRowByLsp(lsp);
+                drs.clear();
+
+            }, bottomAnchor, topAnchor, leftAnchor, rightAnchor);
+            
+            
+            
+            
+            
+            
+        }
+        
+    }
+
 
 
     

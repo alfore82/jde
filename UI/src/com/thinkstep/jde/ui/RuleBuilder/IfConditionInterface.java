@@ -14,4 +14,6 @@ import com.thinkstep.jde.persistence.entities.Rules.Rule;
 public interface IfConditionInterface extends MappingItem{
     public Rule getRule();
     public void setRule(Rule r);
+    public boolean checkSave();
+    
 }

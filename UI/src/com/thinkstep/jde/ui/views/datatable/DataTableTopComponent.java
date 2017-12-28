@@ -35,7 +35,7 @@ import org.openide.util.NbBundle.Messages;
 )
 @TopComponent.Registration(mode = "editor", openAtStartup = true)
 @ActionID(category = "Window", id = "com.thinkstep.jde.ui.views.datatable.DataTableTopComponent")
-@ActionReference(path = "Menu/Window" /*, position = 333 */)
+@ActionReference(path = "Menu/Window" , position = 8, separatorAfter = 9)
 @TopComponent.OpenActionRegistration(
         displayName = "#CTL_DataTableAction",
         preferredID = "DataTableTopComponent"

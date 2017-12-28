@@ -163,9 +163,12 @@ public class RuleService {
         EntityManager em = EntityManagerProvider.getInstance().getEntityManager();
         Query query = em.createQuery("SELECT c FROM Rule c where c.mappingItemId = :id");
         query.setParameter("id", id);
-        Rule result = (Rule) query.getSingleResult();
+        List<Rule> results = query.getResultList();
         em.close();
-        return result;
+        if (results.size()>0){
+            return results.get(0);
+        }
+        return null;
     }
     
 }

@@ -35,13 +35,13 @@ import org.openide.util.NbBundle.Messages;
 )
 @TopComponent.Registration(mode = "editor", openAtStartup = false)
 @ActionID(category = "Window", id = "com.thinkstep.jde.ui.countries.CountryEditorTopComponent")
-@ActionReference(path = "Menu/Window" /*, position = 333 */)
+@ActionReference(path = "Menu/Window" , position = 5)
 @TopComponent.OpenActionRegistration(
         displayName = "#CTL_CountryEditorAction",
         preferredID = "CountryEditorTopComponent"
 )
 @Messages({
-    "CTL_CountryEditorAction=Country editor",
+    "CTL_CountryEditorAction=Countries",
     "CTL_CountryEditorTopComponent=Country editor window",
     "HINT_CountryEditorTopComponent=This is a country editor window"
 })

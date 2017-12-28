@@ -14,4 +14,5 @@ import com.thinkstep.jde.persistence.entities.Rules.Action;
 public interface ActionInterface extends MappingItem{
     public Action getAction();
     public void setAction(Action r);
+    public boolean checkSave();
 }

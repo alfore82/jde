@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="202.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.thinkstep.jde.ui.actions.ChangeDatabaseController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="Database:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <Button layoutX="66.0" layoutY="40.0" mnemonicParsing="false" onAction="#open" text="..." AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="40.0" />
+      <TextField fx:id="tfDatabase" disable="true" layoutX="14.0" layoutY="40.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="40.0" />
+      <Label fx:id="lblWaring" layoutX="14.0" layoutY="75.0" prefHeight="17.0" prefWidth="575.0" text="Attention: Changing the database requires a restart fo the application. If a new database is connected the application will automatically shut down. Unsafed changes may be lost." textFill="RED" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="74.0" />
+      <Button layoutX="536.0" layoutY="361.0" mnemonicParsing="false" onAction="#save" text="Save" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
+   </children>
+</AnchorPane>

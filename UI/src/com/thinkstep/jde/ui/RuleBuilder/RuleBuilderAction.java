@@ -225,10 +225,12 @@ public class RuleBuilderAction extends Group implements ActionInterface{
                     Stage stage = new Stage();
                     stage.setScene(actionType.openMenu());
                     actionType.setDataKeys(keys);
-                    stage.initStyle(StageStyle.UTILITY);
+                    stage.initStyle(StageStyle.DECORATED);
+                    stage.setOnCloseRequest(e-> e.consume());
                     stage.initModality(Modality.APPLICATION_MODAL);
                     stage.setAlwaysOnTop(true);
                     stage.showAndWait();
+                    
                     actionDisplay.setValue(actionType.displayedValue());
                     
                 });
@@ -327,39 +329,51 @@ public class RuleBuilderAction extends Group implements ActionInterface{
     @Override
     public void setAction(Action a) {
         this.action = a;
-        for (Class<? extends RuleBuilderActionType> act:actionTypes){
-            ActionType at = null;
-            try {
-                Method method = act.getMethod("getActionType");
-                at = (ActionType) method.invoke(null,null);
-            } catch (NoSuchMethodException ex) {
-                Exceptions.printStackTrace(ex);
-            } catch (SecurityException ex) {
-                Exceptions.printStackTrace(ex);
-            } catch (IllegalAccessException ex) {
-                Exceptions.printStackTrace(ex);
-            } catch (IllegalArgumentException ex) {
-                Exceptions.printStackTrace(ex);
-            } catch (InvocationTargetException ex) {
-                Exceptions.printStackTrace(ex);
-            }
-            
-            if (at.equals(action.getActionType())){
+        if (this.action != null){
+            for (Class<? extends RuleBuilderActionType> act:actionTypes){
+                ActionType at = null;
                 try {
-                    this.actionType = act.newInstance();
-                    this.actionType.load(this.action.getActionId());
-                } catch (InstantiationException ex) {
+                    Method method = act.getMethod("getActionType");
+                    at = (ActionType) method.invoke(null,null);
+                } catch (NoSuchMethodException ex) {
+                    Exceptions.printStackTrace(ex);
+                } catch (SecurityException ex) {
                     Exceptions.printStackTrace(ex);
                 } catch (IllegalAccessException ex) {
                     Exceptions.printStackTrace(ex);
+                } catch (IllegalArgumentException ex) {
+                    Exceptions.printStackTrace(ex);
+                } catch (InvocationTargetException ex) {
+                    Exceptions.printStackTrace(ex);
                 }
-                
+
+                if (at.equals(action.getActionType())){
+                    try {
+                        this.actionType = act.newInstance();
+                        this.actionType.load(this.action.getActionId());
+                    } catch (InstantiationException ex) {
+                        Exceptions.printStackTrace(ex);
+                    } catch (IllegalAccessException ex) {
+                        Exceptions.printStackTrace(ex);
+                    }
+
+                }
             }
+
+            this.lsp = action.getLsp();
+            actionDisplay.setValue(actionType.displayedValue());
         }
-        
-        this.lsp = action.getLsp();
-        actionDisplay.setValue(actionType.displayedValue());
     }
 
+    @Override
+    public boolean checkSave() {
+        boolean result = true;
+        
+        if (this.actionType != null){
+            result = false;
+        }
+        
+        return result;
+    }
     
 }

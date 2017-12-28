@@ -35,7 +35,7 @@ import org.openide.util.NbBundle.Messages;
 )
 @TopComponent.Registration(mode = "editor", openAtStartup = false)
 @ActionID(category = "Window", id = "com.thinkstep.jde.ui.LocationSearch.LocationSerachTopComponent")
-@ActionReference(path = "Menu/Window" /*, position = 333 */)
+@ActionReference(path = "Menu/Window" , position = 6, separatorAfter = 7 )
 @TopComponent.OpenActionRegistration(
         displayName = "#CTL_LocationSerachAction",
         preferredID = "LocationSerachTopComponent"

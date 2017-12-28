@@ -172,9 +172,12 @@ public class ActionService {
         EntityManager em = EntityManagerProvider.getInstance().getEntityManager();
         Query query = em.createQuery("SELECT c FROM Action c where c.mappingItemId = :id");
         query.setParameter("id", id);
-        Action result = (Action) query.getSingleResult();
+        List<Action> results = query.getResultList();
         em.close();
-        return result;
+        if (results.size() > 0){
+            return results.get(0);
+        }        
+        return null;
     }
     
 }

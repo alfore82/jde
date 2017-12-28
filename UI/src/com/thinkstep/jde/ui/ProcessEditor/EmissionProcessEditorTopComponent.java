@@ -35,8 +35,8 @@ import org.openide.util.NbBundle.Messages;
 )
 @TopComponent.Registration(mode = "editor", openAtStartup = false)
 @Messages({
-    "CTL_EmissionProcessEditorTopComponent=EmissionProcessEditor Window",
-    "HINT_EmissionProcessEditorTopComponent=This is a EmissionProcessEditor window"
+    "CTL_EmissionProcessEditorTopComponent=Emission processes",
+    "HINT_EmissionProcessEditorTopComponent=This is a emission process editor window"
 })
 public final class EmissionProcessEditorTopComponent extends TopComponent {
 

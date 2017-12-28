@@ -25,6 +25,8 @@ import javafx.event.EventHandler;
 import javafx.geometry.Side;
 import javafx.scene.Group;
 import javafx.scene.SnapshotParameters;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
@@ -187,34 +189,45 @@ public class RuleBuilder extends AnchorPane implements Plane{
     }
     
     private void save(){
-        MappingItemGraphicsService migs = MappingItemGraphicsService.getINSTANCE();
-        RuleService ruleService = RuleService.getINSTANCE();
-        ActionService actionService = ActionService.getINSTANCE();
-        
-        migs.deleteMappingItemGraphicsByLspByMappingType(lsp, mappingType);
-        ruleService.deleteRulesByLspAndMappingTypeAndParent(lsp, mappingType);
-        actionService.deleteActionsByLspAndMappingType(lsp, mappingType);
-        
-        List<MappingItem> parentItems = findRoots();
-        for (MappingItem parentItem:parentItems){
-            MappingItemGraphics mig = parentItem.getMappingItemGraphics();
-            migs.addOrEditMappingItemGraphics(mig);
-            if (parentItem instanceof IfConditionInterface){
-                IfConditionInterface cond = (IfConditionInterface) parentItem;
-                Rule r = cond.getRule();
-                r.setMappingItemId(mig.getId());
-                ruleService.addOrEditRule(r);
-            }
-            if (parentItem instanceof ActionInterface){
-                ActionInterface action = (ActionInterface) parentItem;
-                Action a = action.getAction();
-                a.setMappingItemId(mig.getId());
-                actionService.addOrEditAction(a);
+        boolean save = checkSave();
+        if (save){
+            MappingItemGraphicsService migs = MappingItemGraphicsService.getINSTANCE();
+            RuleService ruleService = RuleService.getINSTANCE();
+            ActionService actionService = ActionService.getINSTANCE();
+
+            migs.deleteMappingItemGraphicsByLspByMappingType(lsp, mappingType);
+            ruleService.deleteRulesByLspAndMappingTypeAndParent(lsp, mappingType);
+            actionService.deleteActionsByLspAndMappingType(lsp, mappingType);
+
+            List<MappingItem> parentItems = findRoots();
+            for (MappingItem parentItem:parentItems){
+                MappingItemGraphics mig = parentItem.getMappingItemGraphics();
+                migs.addOrEditMappingItemGraphics(mig);
+                if (parentItem instanceof IfConditionInterface){
+                    IfConditionInterface cond = (IfConditionInterface) parentItem;
+                    Rule r = cond.getRule();
+                    r.setMappingItemId(mig.getId());
+                    ruleService.addOrEditRule(r);
+                }
+                if (parentItem instanceof ActionInterface){
+                    ActionInterface action = (ActionInterface) parentItem;
+                    Action a = action.getAction();
+                    a.setMappingItemId(mig.getId());
+                    actionService.addOrEditAction(a);
+                }
+
+                saveChildren(parentItem);
+
             }
             
-            saveChildren(parentItem);
-            
+        } else {
+            Alert al = new Alert(AlertType.WARNING);
+            al.setHeaderText("Cannot save changes");
+            al.setContentText("Not all items are completely defined, the changes cannot be saved.");
+            al.show();
         }
+        
+        
         
     }
     
@@ -267,7 +280,8 @@ public class RuleBuilder extends AnchorPane implements Plane{
                 switch (parent.getItemType()){
                     case IFCONDITION:
                         Rule r = rService.findRulesMappingItemId(parent.getId());
-                        mi = addCondition(dockStart, null, r.getParentConnector());
+                        if (r!=null) mi = addCondition(dockStart, null, r.getParentConnector());
+                        else mi = addCondition(dockStart, null, null);
                         mi.shift(new Dock(parent.getLayoutX(),parent.getLayoutY()));
                         mi.setMappingItemGraphics(parent);
                         IfConditionInterface cond = (IfConditionInterface) mi;
@@ -277,7 +291,9 @@ public class RuleBuilder extends AnchorPane implements Plane{
                         break;
                     case ACTION:
                         Action a = aService.findActionMappingItemId(parent.getId());
-                        mi = addAction(dockStart, null, a.getParentConnector());
+                        if (a !=null) mi = addAction(dockStart, null, a.getParentConnector());
+                        else mi = addAction(dockStart, null, null);
+                        
                         mi.shift(new Dock(parent.getLayoutX(),parent.getLayoutY()));
                         mi.setMappingItemGraphics(parent);
                         ActionInterface action = (ActionInterface) mi;
@@ -336,6 +352,49 @@ public class RuleBuilder extends AnchorPane implements Plane{
     
     public void load(){
         loadParents();
+    }
+
+    private boolean checkSave() {
+        
+        boolean save = true;
+        
+        List<MappingItem> parentItems = findRoots();
+        for (MappingItem parentItem:parentItems){
+            if (parentItem instanceof IfConditionInterface){
+                IfConditionInterface cond = (IfConditionInterface) parentItem;
+                save = save & cond.checkSave();
+            }
+            if (parentItem instanceof ActionInterface){
+                ActionInterface action = (ActionInterface) parentItem;
+                save = save & action.checkSave();
+            }
+            save = save & checkSaveChildren(parentItem);
+            
+        }
+        return save;
+    }
+
+    private boolean checkSaveChildren(MappingItem parent) {
+        boolean save = true;
+        
+        List<MappingItem> siblings = new ArrayList<>();
+        for (MappingItem item:items){
+            if (parent.equals(item.getParentItem())){
+                siblings.add(item);
+            }
+        }
+        for (MappingItem sibling:siblings){
+            if (sibling instanceof IfConditionInterface){
+                IfConditionInterface cond = (IfConditionInterface) sibling;
+                save = save & cond.checkSave();
+            }
+            if (sibling instanceof ActionInterface) {
+                ActionInterface action = (ActionInterface) sibling;
+                save = save & action.checkSave();
+            }
+            save = save & checkSaveChildren(sibling);
+        }
+        return save;
     }
     
 }
