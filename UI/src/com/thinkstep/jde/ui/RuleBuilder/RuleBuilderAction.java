@@ -369,7 +369,7 @@ public class RuleBuilderAction extends Group implements ActionInterface{
     public boolean checkSave() {
         boolean result = true;
         
-        if (this.actionType != null){
+        if (this.actionType == null){
             result = false;
         }
         

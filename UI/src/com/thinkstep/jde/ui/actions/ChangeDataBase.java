@@ -5,8 +5,6 @@
  */
 package com.thinkstep.jde.ui.actions;
 
-import com.thinkstep.jde.imports.filereaders.TabStopFileReader;
-import com.thinkstep.jde.imports.filereaders.XlsFileReader;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -16,7 +14,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
