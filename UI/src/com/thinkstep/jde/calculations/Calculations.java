@@ -860,7 +860,6 @@ public class Calculations {
         loadFactorAverage = loadFactorAverage / partials.get(partials.size()-1).getDistance();
         return loadFactorAverage;
         
-        
     }
     
     private String getValueAsString(DataRow dataRow, DataKey key){
