@@ -27,7 +27,7 @@ public class OdsProvider{
     public List<Location> readOds() {
         List<Location> locs = new ArrayList<>();
         try {
-            URL url = getClass().getResource("eu2017.ods");
+            URL url = getClass().getResource("eu2018.ods");
             InputStreamReader reader = new InputStreamReader(url.openStream(), "Cp850");
             BufferedReader br = null;
             br = new BufferedReader(reader);

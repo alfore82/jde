@@ -51,6 +51,7 @@ import java.util.Map;
 import java.util.Set;
 import static java.lang.Math.abs;
 import java.text.NumberFormat;
+import java.util.Comparator;
 
 /**
  *
@@ -809,7 +810,29 @@ public class Calculations {
         }
         
         int numVehicle = 0;
-        for (TourData tourdata:tourDatas.get(tid)){
+        
+        if ("3036672".equals(tid)){
+            System.out.println("here");
+        }
+        
+        List<TourData> tourDataList = tourDatas.get(tid).stream().collect(new TourAggregator());
+        
+        tourDataList.sort(new Comparator<TourData>(){
+            @Override
+            public int compare(TourData o1, TourData o2) {
+                if (o1.getDistance() == o2.getDistance()){
+                    return 0;
+                }
+                if (o1.getDistance()<o2.getDistance()){
+                    return -1;
+                } else {
+                    return 1;
+                }
+            }
+        
+        });
+        
+        for (TourData tourdata:tourDataList){
             LoadFactorDistanceWrapper lfdw = new LoadFactorDistanceWrapper();
             lfdw.setDistance(tourdata.getDistance());
             if (numVehicle == 0){
@@ -825,18 +848,20 @@ public class Calculations {
                 break;
             }
         }
+        
+        
+        
         double loadFactorAverage = 0;
         for (int i = 0; i<partials.size();i++){
             if ( i == 0){
                 loadFactorAverage = partials.get(i).getDistance() * partials.get(i).getLoadFactor();
             } else {
-                loadFactorAverage = (partials.get(i).getDistance() - partials.get(i-1).getDistance()) * partials.get(i).getLoadFactor();
+                loadFactorAverage = loadFactorAverage + (partials.get(i).getDistance() - partials.get(i-1).getDistance()) * partials.get(i).getLoadFactor();
             }
            
         }
         
         loadFactorAverage = loadFactorAverage / partials.get(partials.size()-1).getDistance();
-        
         return loadFactorAverage;
         
         

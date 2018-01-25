@@ -27,7 +27,7 @@ public class DistanceMatrixProvider {
         InputStreamReader reader = null;
         try {
             List<Short> distances = new ArrayList<>();
-            URL location = getClass().getResource("eu2017.dm");
+            URL location = getClass().getResource("eu2018.dm");
             reader = new InputStreamReader(location.openStream(), "Cp850");
             BufferedReader br = new BufferedReader(reader);
             String line;
