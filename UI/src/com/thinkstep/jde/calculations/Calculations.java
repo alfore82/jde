@@ -811,10 +811,6 @@ public class Calculations {
         
         int numVehicle = 0;
         
-        if ("3036672".equals(tid)){
-            System.out.println("here");
-        }
-        
         List<TourData> tourDataList = tourDatas.get(tid).stream().collect(new TourAggregator());
         
         tourDataList.sort(new Comparator<TourData>(){
